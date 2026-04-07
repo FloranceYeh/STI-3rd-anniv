@@ -1,0 +1,28 @@
+{
+  "type": "dir",
+  "children": {
+    "home": {
+      "type": "dir",
+      "children": {
+        "stier": {
+          "type": "dir",
+          "children": {
+            "notes.txt": {
+              "type": "file",
+              "source": "./fs/home/stier/notes.txt"
+            },
+            "Pictures": {
+              "type": "dir",
+              "children": {
+                "flf.jpg": {
+                  "type": "file",
+                  "source": "./fs/home/stier/Pictures/flf.jpg"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
