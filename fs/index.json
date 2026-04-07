@@ -29,10 +29,6 @@
                 }
               }
             },
-            "Music": {
-              "type": "dir",
-              "children": {}
-            },
             "notes.txt": {
               "type": "file",
               "source": "./fs/home/stier/notes.txt"
@@ -45,6 +41,10 @@
                   "source": "./fs/home/stier/Pictures/flf.jpg"
                 }
               }
+            },
+            "WeAreTheLowestOfLow": {
+              "type": "file",
+              "source": "./fs/home/stier/WeAreTheLowestOfLow"
             }
           }
         }

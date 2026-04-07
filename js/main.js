@@ -137,10 +137,22 @@ const IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'svg'];
 const VIDEO_EXTENSIONS = ['mp4', 'webm', 'ogg', 'mov', 'm4v'];
 const TEXT_EXTENSIONS = ['txt', 'md', 'html', 'css', 'js', 'json', 'yml', 'yaml', 'xml', 'csv', 'log'];
 
+const fileSystemCache = new Map();
+let fileSystemReadyPromise = null;
+
 let currentPath = '/home/stier';
 
+function getDisplayPath(path) {
+    if (path === '/home/stier') {
+        return '~';
+    } else if (path.startsWith('/home/stier/')) {
+        return '~' + path.substring(11);
+    }
+    return path;
+}
+
 function updatePrompt() {
-    promptSpan.textContent = `user@stier:${currentPath}$`;
+    promptSpan.textContent = `user@stier:${getDisplayPath(currentPath)}$`;
 }
 
 function pathToParts(path) {
@@ -157,6 +169,10 @@ function partsToPath(parts) {
 function resolvePath(inputPath) {
     if (!inputPath || inputPath === '.') {
         return currentPath;
+    }
+
+    if (inputPath.startsWith('~')) {
+        inputPath = '/home/stier' + inputPath.substring(1);
     }
 
     const baseParts = inputPath.startsWith('/') ? [] : pathToParts(currentPath);
@@ -373,7 +389,7 @@ function appendOutput(html) {
 updatePrompt();
 
 const fastfetchArt = `
-<span class="c-cyan">         __ </span>  <span class="c-green">user@stier</span>
+<span class="c-cyan">         __ </span>  <span class="c-green"user@stier</span>
 <span class="c-cyan">        / / </span>  --------------
 <span class="c-cyan">       / /  </span>  <span class="c-yellow">OS</span>: HTML5 Web Desktop
 <span class="c-cyan">      / /   </span>  <span class="c-yellow">Kernel</span>: Browser Engine
@@ -395,28 +411,104 @@ const fastfetchArt = `
 <span class="c-cyan">|_|         </span>
 `;
 
-input.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        const cmd = this.value.trim();
-        
-        // 1. 添加用户的输入历史
-        const userLine = document.createElement('div');
-        userLine.className = 'output-line';
-        userLine.innerHTML = `<span class="prompt">user@stier:${currentPath}$</span><span class="user-input">${escapeHtml(cmd)}</span>`;
-        historyDiv.appendChild(userLine);
+const commandHistory = [];
+let commandHistoryIndex = -1;
+let currentDraft = '';
 
-        // 2. 处理命令
-        processCommand(cmd);
+const AVAILABLE_COMMANDS = ['help', 'clear', 'date', 'ls', 'tree', 'cd', 'cat', 'open', 'view', 'pwd', 'whoami', 'fastfetch', 'reboot'];
 
-        // 3. 清空输入框并滚动到底部
-        this.value = '';
-        termBody.scrollTop = termBody.scrollHeight;
+input.addEventListener('keydown', async function(event) {
+    if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (commandHistory.length > 0) {
+            if (commandHistoryIndex === -1) {
+                currentDraft = this.value;
+                commandHistoryIndex = commandHistory.length - 1;
+                this.value = commandHistory[commandHistoryIndex];
+            } else if (commandHistoryIndex > 0) {
+                commandHistoryIndex--;
+                this.value = commandHistory[commandHistoryIndex];
+            }
+        }
+        return;
+    }
+
+    if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        if (commandHistoryIndex !== -1) {
+            if (commandHistoryIndex < commandHistory.length - 1) {
+                commandHistoryIndex++;
+                this.value = commandHistory[commandHistoryIndex];
+            } else {
+                commandHistoryIndex = -1;
+                this.value = currentDraft;
+            }
+        }
+        return;
+    }
+
+    if (event.key === 'Tab') {
+        event.preventDefault();
+        const inputVal = this.value;
+        const lastWordMatch = inputVal.match(/(\S+)$/);
+
+        if (!lastWordMatch) {
+            return;
+        }
+
+        const lastWord = lastWordMatch[1];
+        const isCommand = inputVal.trim() === lastWord;
+
+        if (isCommand) {
+            const matches = AVAILABLE_COMMANDS.filter(c => c.startsWith(lastWord));
+            if (matches.length === 1) {
+                this.value = matches[0] + ' ';
+            }
+        } else {
+            let dirPath = '';
+            let prefix = lastWord;
+
+            const lastSlashIndex = lastWord.lastIndexOf('/');
+            if (lastSlashIndex >= 0) {
+                dirPath = lastWord.substring(0, lastSlashIndex);
+                if (dirPath === '') dirPath = '/';
+                prefix = lastWord.substring(lastSlashIndex + 1);
+            }
+
+            const targetDir = resolvePath(dirPath || '.');
+            const node = await getNodeByPath(targetDir);
+
+            if (node && node.type === 'dir') {
+                const childNames = Object.keys(node.children);
+                const matches = childNames.filter(name => name.startsWith(prefix));
+
+                if (matches.length === 1) {
+                    const matchNode = node.children[matches[0]];
+                    const suffix = matchNode.type === 'dir' ? '/' : ' ';
+                    const prefixPath = lastSlashIndex >= 0 ? lastWord.substring(0, lastSlashIndex + 1) : '';
+                    this.value = inputVal.substring(0, inputVal.length - lastWord.length) + prefixPath + matches[0] + suffix;
+                }
+            }
+        }
+        return;
+    }
+
+    if (event.key !== 'Enter') {
+        return;
     }
 
     const cmd = this.value.trim();
+    if (cmd) {
+        if (commandHistory.length === 0 || commandHistory[commandHistory.length - 1] !== cmd) {
+            commandHistory.push(cmd);
+        }
+    }
+    commandHistoryIndex = -1;
+    currentDraft = '';
+
     const userLine = document.createElement('div');
     userLine.className = 'output-line';
-    userLine.innerHTML = `<span class="prompt">stier@stier:${currentPath}$</span><span class="user-input">${escapeHtml(cmd)}</span>`;
+    userLine.innerHTML = `<span class="prompt">user@stier:${getDisplayPath(currentPath)}$</span><span class="user-input">${escapeHtml(cmd)}</span>`;
     historyDiv.appendChild(userLine);
 
     this.value = '';
@@ -447,81 +539,32 @@ Available commands:<br>
 <span class="c-yellow">pwd</span>        Print current directory<br>
 <span class="c-yellow">whoami</span>     Print effective userid<br>
 <span class="c-yellow">fastfetch</span>  Show system info<br>
-<span class="c-yellow">reboot</span>    Reload the page<br>`;
-            break;
-        case 'clear':
-            historyDiv.innerHTML = '';
-            return;
-        case 'date':
-            output = new Date().toString();
-            break;
-        case 'whoami':
-            output = 'user';
-            break;
-        case 'ls':
-            {
-                const node = getNodeByPath(currentPath);
-                const childNames = Object.keys(node.children).sort((a, b) => a.localeCompare(b));
-                output = childNames
-                    .map((name) => {
-                        const child = node.children[name];
-                        return child.type === 'dir' ? `<span class="c-cyan">${name}</span>` : name;
-                    })
-                    .join('  ');
-            }
-            break;
-        case 'tree':
-            {
-                const targetPath = resolvePath(args[0] || '.');
-                const node = getNodeByPath(targetPath);
+<span class="c-yellow">reboot</span>     Reload the page<br>`;
+                break;
+            case 'clear':
+                historyDiv.innerHTML = '';
+                return;
+            case 'date':
+                output = new Date().toString();
+                break;
+            case 'whoami':
+                output = 'stier';
+                break;
+            case 'ls':
+                {
+                    const node = await getNodeByPath(currentPath);
+                    if (!node || node.type !== 'dir') {
+                        output = `ls: cannot access '${currentPath}': No such directory`;
+                        break;
+                    }
 
-                if (!node) {
-                    output = `tree: cannot access '${args[0] || '.'}': No such file or directory`;
-                    break;
-                }
-
-                if (node.type !== 'dir') {
-                    output = args[0] || targetPath;
-                    break;
-                }
-
-                const title = targetPath === '/' ? '<span class="c-cyan">/</span>' : `<span class="c-cyan">${targetPath}</span>`;
-                const treeLines = renderTree(node);
-                output = `${title}<br>${treeLines.join('<br>')}`;
-            }
-            break;
-        case 'cd':
-            {
-                const targetPath = resolvePath(args[0] || '/');
-                const node = getNodeByPath(targetPath);
-
-                if (!node) {
-                    output = `cd: ${args[0] || ''}: No such file or directory`;
-                    break;
-                }
-
-                if (node.type !== 'dir') {
-                    output = `cd: ${args[0]}: Not a directory`;
-                    break;
-                }
-
-                currentPath = targetPath;
-                updatePrompt();
-            }
-            break;
-        case 'cat':
-            {
-                if (!args[0]) {
-                    output = 'cat: missing file operand';
-                    break;
-                }
-
-                const targetPath = resolvePath(args[0]);
-                const node = getNodeByPath(targetPath);
-
-                if (!node) {
-                    output = `cat: ${args[0]}: No such file or directory`;
-                    break;
+                    const childNames = Object.keys(node.children).sort((left, right) => left.localeCompare(right));
+                    output = childNames
+                        .map((name) => {
+                            const child = node.children[name];
+                            return child.type === 'dir' ? `<span class="c-cyan">${escapeHtml(name)}</span>` : escapeHtml(name);
+                        })
+                        .join('  ');
                 }
                 break;
             case 'tree':
@@ -548,16 +591,16 @@ Available commands:<br>
                 break;
             case 'cd':
                 {
-                    const targetPath = resolvePath(args[0] || '/');
+                    const targetPath = resolvePath(args[0] || '~');
                     const node = await getNodeByPath(targetPath);
 
                     if (!node) {
-                        output = `cd: ${escapeHtml(args[0] || '')}: No such file or directory`;
+                        output = `cd: ${escapeHtml(args[0] || '~')}: No such file or directory`;
                         break;
                     }
 
                     if (node.type !== 'dir') {
-                        output = `cd: ${escapeHtml(args[0] || '')}: Not a directory`;
+                        output = `cd: ${escapeHtml(args[0] || '~')}: Not a directory`;
                         break;
                     }
 
