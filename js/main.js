@@ -118,6 +118,135 @@ document.addEventListener('mouseup', () => {
 const input = document.getElementById('cmd-input');
 const historyDiv = document.getElementById('history');
 const termBody = document.getElementById('term-body');
+const promptSpan = document.querySelector('.command-line .prompt');
+
+// 可自定义的虚拟文件树（目录: type=dir，文件: type=file）
+const FILE_SYSTEM = {
+    type: 'dir',
+    children: {
+        Documents: {
+            type: 'dir',
+            children: {
+                'plan.md': { type: 'file',
+                            content: '# STI 3rd Anniversary\n\n- Build demo\n- Test UI\n- Ship it'
+                        },
+                'nameOFanother.txt': { type: 'file',
+                    content: '科技楼神秘小团体'
+                }
+            }
+        },
+        Downloads: {
+            type: 'dir',
+            children: {
+                'release-notes.txt': {
+                    type: 'file',
+                    content: 'v1.0.0\n- Initial web desktop release'
+                }
+            }
+        },
+        Music: {
+            type: 'dir',
+            children: {}
+        },
+        Pictures: {
+            type: 'dir',
+            children: {}
+        },
+        'notes.txt': {
+            type: 'file',
+            content: 'Remember to update README before release.'
+        },
+        'script.js': {
+            type: 'file',
+            content: 'console.log("STI desktop boot");'
+        }
+    }
+};
+
+let currentPath = '/';
+
+function updatePrompt() {
+    promptSpan.textContent = `root@stier:${currentPath}$`;
+}
+
+function pathToParts(path) {
+    if (path === '/') {
+        return [];
+    }
+    return path.split('/').filter(Boolean);
+}
+
+function partsToPath(parts) {
+    return parts.length ? `/${parts.join('/')}` : '/';
+}
+
+function resolvePath(inputPath) {
+    if (!inputPath || inputPath === '.') {
+        return currentPath;
+    }
+
+    const baseParts = inputPath.startsWith('/') ? [] : pathToParts(currentPath);
+    const inputParts = inputPath.split('/');
+
+    for (const part of inputParts) {
+        if (!part || part === '.') {
+            continue;
+        }
+        if (part === '..') {
+            if (baseParts.length) {
+                baseParts.pop();
+            }
+            continue;
+        }
+        baseParts.push(part);
+    }
+
+    return partsToPath(baseParts);
+}
+
+function getNodeByPath(path) {
+    const parts = pathToParts(path);
+    let node = FILE_SYSTEM;
+
+    for (const part of parts) {
+        if (node.type !== 'dir') {
+            return null;
+        }
+        node = node.children[part];
+        if (!node) {
+            return null;
+        }
+    }
+
+    return node;
+}
+
+function renderTree(node, prefix = '', isLast = true, name = '') {
+    const lines = [];
+
+    if (name) {
+        const connector = isLast ? '└── ' : '├── ';
+        const coloredName = node.type === 'dir' ? `<span class="c-cyan">${name}</span>` : name;
+        lines.push(`${prefix}${connector}${coloredName}`);
+    }
+
+    if (node.type !== 'dir') {
+        return lines;
+    }
+
+    const childNames = Object.keys(node.children).sort((a, b) => a.localeCompare(b));
+    const nextPrefix = name ? `${prefix}${isLast ? '    ' : '│   '}` : prefix;
+
+    childNames.forEach((childName, index) => {
+        const childNode = node.children[childName];
+        const childIsLast = index === childNames.length - 1;
+        lines.push(...renderTree(childNode, nextPrefix, childIsLast, childName));
+    });
+
+    return lines;
+}
+
+updatePrompt();
 
 // ASCII Art Logo
 const fastfetchArt = `
@@ -150,11 +279,11 @@ input.addEventListener('keydown', function(e) {
         // 1. 添加用户的输入历史
         const userLine = document.createElement('div');
         userLine.className = 'output-line';
-        userLine.innerHTML = `<span class="prompt">root@stier:~$</span> ${cmd}`;
+        userLine.innerHTML = `<span class="prompt">root@stier:${currentPath}$</span> ${cmd}`;
         historyDiv.appendChild(userLine);
 
         // 2. 处理命令
-        processCommand(cmd.toLowerCase());
+        processCommand(cmd);
 
         // 3. 清空输入框并滚动到底部
         this.value = '';
@@ -164,14 +293,21 @@ input.addEventListener('keydown', function(e) {
 
 function processCommand(cmd) {
     let output = '';
+    const [command, ...args] = cmd.split(/\s+/);
+    const normalizedCommand = (command || '').toLowerCase();
 
-    switch(cmd) {
+    switch(normalizedCommand) {
         case 'help':
-            output = `Available commands:<br>
+            output = `
+Available commands:<br>
 <span class="c-yellow">help</span>      Show this help message<br>
 <span class="c-yellow">clear</span>     Clear the terminal screen<br>
 <span class="c-yellow">date</span>      Show current date and time<br>
-<span class="c-yellow">ls</span>        List directory contents (fake)<br>
+<span class="c-yellow">ls</span>        List directory contents<br>
+<span class="c-yellow">tree</span>      Show file tree (use: tree [path])<br>
+<span class="c-yellow">cd</span>        Change directory (use: cd [path])<br>
+<span class="c-yellow">cat</span>       Show file content (use: cat &lt;file&gt;)<br>
+<span class="c-yellow">pwd</span>       Print current directory<br>
 <span class="c-yellow">whoami</span>    Print effective userid<br>
 <span class="c-yellow">fastfetch</span>  Show system info<br>
 <span class="c-yellow">reboot</span>    Reload the page<br>`;
@@ -186,7 +322,81 @@ function processCommand(cmd) {
             output = 'root';
             break;
         case 'ls':
-            output = '<span class="c-cyan">Documents</span>  <span class="c-cyan">Downloads</span>  <span class="c-cyan">Music</span>  <span class="c-cyan">Pictures</span>  notes.txt  script.js';
+            {
+                const node = getNodeByPath(currentPath);
+                const childNames = Object.keys(node.children).sort((a, b) => a.localeCompare(b));
+                output = childNames
+                    .map((name) => {
+                        const child = node.children[name];
+                        return child.type === 'dir' ? `<span class="c-cyan">${name}</span>` : name;
+                    })
+                    .join('  ');
+            }
+            break;
+        case 'tree':
+            {
+                const targetPath = resolvePath(args[0] || '.');
+                const node = getNodeByPath(targetPath);
+
+                if (!node) {
+                    output = `tree: cannot access '${args[0] || '.'}': No such file or directory`;
+                    break;
+                }
+
+                if (node.type !== 'dir') {
+                    output = args[0] || targetPath;
+                    break;
+                }
+
+                const title = targetPath === '/' ? '<span class="c-cyan">/</span>' : `<span class="c-cyan">${targetPath}</span>`;
+                const treeLines = renderTree(node);
+                output = `${title}<br>${treeLines.join('<br>')}`;
+            }
+            break;
+        case 'cd':
+            {
+                const targetPath = resolvePath(args[0] || '/');
+                const node = getNodeByPath(targetPath);
+
+                if (!node) {
+                    output = `cd: ${args[0] || ''}: No such file or directory`;
+                    break;
+                }
+
+                if (node.type !== 'dir') {
+                    output = `cd: ${args[0]}: Not a directory`;
+                    break;
+                }
+
+                currentPath = targetPath;
+                updatePrompt();
+            }
+            break;
+        case 'cat':
+            {
+                if (!args[0]) {
+                    output = 'cat: missing file operand';
+                    break;
+                }
+
+                const targetPath = resolvePath(args[0]);
+                const node = getNodeByPath(targetPath);
+
+                if (!node) {
+                    output = `cat: ${args[0]}: No such file or directory`;
+                    break;
+                }
+
+                if (node.type !== 'file') {
+                    output = `cat: ${args[0]}: Is a directory`;
+                    break;
+                }
+
+                output = node.content.replace(/\n/g, '<br>');
+            }
+            break;
+        case 'pwd':
+            output = currentPath;
             break;
         case 'fastfetch':
             output = `<div class="ascii-art">${fastfetchArt}</div>`;
@@ -198,7 +408,7 @@ function processCommand(cmd) {
         case '':
             return;
         default:
-            output = `bash: ${cmd}: command not found`;
+            output = `bash: ${command}: command not found`;
     }
 
     if (output) {
