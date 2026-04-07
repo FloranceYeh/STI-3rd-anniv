@@ -8,19 +8,16 @@
 </head>
 <body>
 
-    
     <canvas id="matrix-bg"></canvas>
 
-    
     <div id="top-bar">
-        <div>Applications</div>
+        <div>STI Desktop</div>
         <div id="clock">Loading...</div>
     </div>
 
-    
     <div id="terminal">
         <div class="term-header" id="drag-header">
-            <div class="term-title">root@stier:~</div>
+            <div class="term-title">user@stier:~</div>
         </div>
         <div class="term-body" id="term-body" onclick="document.getElementById('cmd-input').focus()">
             <div id="history">
@@ -30,7 +27,7 @@
                 <br>
             </div>
             <div class="command-line">
-                <span class="prompt">root@stier:~$</span>
+                <span class="prompt">user@stier:~$</span>
                 <input type="text" id="cmd-input" autocomplete="off" autofocus>
             </div>
         </div>

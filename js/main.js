@@ -137,13 +137,10 @@ const IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'svg'];
 const VIDEO_EXTENSIONS = ['mp4', 'webm', 'ogg', 'mov', 'm4v'];
 const TEXT_EXTENSIONS = ['txt', 'md', 'html', 'css', 'js', 'json', 'yml', 'yaml', 'xml', 'csv', 'log'];
 
-const fileSystemCache = new Map();
-let fileSystemReadyPromise = null;
-
 let currentPath = '/home/stier';
 
 function updatePrompt() {
-    promptSpan.textContent = `stier@stier:${currentPath}$`;
+    promptSpan.textContent = `user@stier:${currentPath}$`;
 }
 
 function pathToParts(path) {
@@ -376,7 +373,7 @@ function appendOutput(html) {
 updatePrompt();
 
 const fastfetchArt = `
-<span class="c-cyan">         __ </span>  <span class="c-green">stier@stier</span>
+<span class="c-cyan">         __ </span>  <span class="c-green">user@stier</span>
 <span class="c-cyan">        / / </span>  --------------
 <span class="c-cyan">       / /  </span>  <span class="c-yellow">OS</span>: HTML5 Web Desktop
 <span class="c-cyan">      / /   </span>  <span class="c-yellow">Kernel</span>: Browser Engine
@@ -398,9 +395,22 @@ const fastfetchArt = `
 <span class="c-cyan">|_|         </span>
 `;
 
-input.addEventListener('keydown', async function(event) {
-    if (event.key !== 'Enter') {
-        return;
+input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        const cmd = this.value.trim();
+        
+        // 1. 添加用户的输入历史
+        const userLine = document.createElement('div');
+        userLine.className = 'output-line';
+        userLine.innerHTML = `<span class="prompt">user@stier:${currentPath}$</span><span class="user-input">${escapeHtml(cmd)}</span>`;
+        historyDiv.appendChild(userLine);
+
+        // 2. 处理命令
+        processCommand(cmd);
+
+        // 3. 清空输入框并滚动到底部
+        this.value = '';
+        termBody.scrollTop = termBody.scrollHeight;
     }
 
     const cmd = this.value.trim();
@@ -437,32 +447,81 @@ Available commands:<br>
 <span class="c-yellow">pwd</span>        Print current directory<br>
 <span class="c-yellow">whoami</span>     Print effective userid<br>
 <span class="c-yellow">fastfetch</span>  Show system info<br>
-<span class="c-yellow">reboot</span>     Reload the page<br>`;
-                break;
-            case 'clear':
-                historyDiv.innerHTML = '';
-                return;
-            case 'date':
-                output = new Date().toString();
-                break;
-            case 'whoami':
-                output = 'stier';
-                break;
-            case 'ls':
-                {
-                    const node = await getNodeByPath(currentPath);
-                    if (!node || node.type !== 'dir') {
-                        output = `ls: cannot access '${currentPath}': No such directory`;
-                        break;
-                    }
+<span class="c-yellow">reboot</span>    Reload the page<br>`;
+            break;
+        case 'clear':
+            historyDiv.innerHTML = '';
+            return;
+        case 'date':
+            output = new Date().toString();
+            break;
+        case 'whoami':
+            output = 'user';
+            break;
+        case 'ls':
+            {
+                const node = getNodeByPath(currentPath);
+                const childNames = Object.keys(node.children).sort((a, b) => a.localeCompare(b));
+                output = childNames
+                    .map((name) => {
+                        const child = node.children[name];
+                        return child.type === 'dir' ? `<span class="c-cyan">${name}</span>` : name;
+                    })
+                    .join('  ');
+            }
+            break;
+        case 'tree':
+            {
+                const targetPath = resolvePath(args[0] || '.');
+                const node = getNodeByPath(targetPath);
 
-                    const childNames = Object.keys(node.children).sort((left, right) => left.localeCompare(right));
-                    output = childNames
-                        .map((name) => {
-                            const child = node.children[name];
-                            return child.type === 'dir' ? `<span class="c-cyan">${escapeHtml(name)}</span>` : escapeHtml(name);
-                        })
-                        .join('  ');
+                if (!node) {
+                    output = `tree: cannot access '${args[0] || '.'}': No such file or directory`;
+                    break;
+                }
+
+                if (node.type !== 'dir') {
+                    output = args[0] || targetPath;
+                    break;
+                }
+
+                const title = targetPath === '/' ? '<span class="c-cyan">/</span>' : `<span class="c-cyan">${targetPath}</span>`;
+                const treeLines = renderTree(node);
+                output = `${title}<br>${treeLines.join('<br>')}`;
+            }
+            break;
+        case 'cd':
+            {
+                const targetPath = resolvePath(args[0] || '/');
+                const node = getNodeByPath(targetPath);
+
+                if (!node) {
+                    output = `cd: ${args[0] || ''}: No such file or directory`;
+                    break;
+                }
+
+                if (node.type !== 'dir') {
+                    output = `cd: ${args[0]}: Not a directory`;
+                    break;
+                }
+
+                currentPath = targetPath;
+                updatePrompt();
+            }
+            break;
+        case 'cat':
+            {
+                if (!args[0]) {
+                    output = 'cat: missing file operand';
+                    break;
+                }
+
+                const targetPath = resolvePath(args[0]);
+                const node = getNodeByPath(targetPath);
+
+                if (!node) {
+                    output = `cat: ${args[0]}: No such file or directory`;
+                    break;
                 }
                 break;
             case 'tree':

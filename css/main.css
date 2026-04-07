@@ -9,6 +9,10 @@
     --font-stack: 'Fira Code', 'Courier New', monospace;
 }
 
+::selection {
+    background: rgba(100, 255, 100, 0.2);
+}
+
 body {
     margin: 0;
     padding: 0;
