@@ -174,6 +174,10 @@ const FILE_SYSTEM = {
         'notes.txt': {
             type: 'file',
             content: 'STI\'s 3rd anniversary is coming!'
+        },
+        'README.md': {
+            type: 'file',
+            content: '#'
         }
     }
 };
@@ -181,7 +185,7 @@ const FILE_SYSTEM = {
 let currentPath = '/';
 
 function updatePrompt() {
-    promptSpan.textContent = `root@stier:${currentPath}$`;
+    promptSpan.textContent = `user@stier:${currentPath}$`;
 }
 
 function pathToParts(path) {
@@ -343,7 +347,7 @@ updatePrompt();
 
 // ASCII Art Logo
 const fastfetchArt = `
-<span class="c-cyan">         __ </span>  <span class="c-green">root@stier</span>
+<span class="c-cyan">         __ </span>  <span class="c-green">user@stier</span>
 <span class="c-cyan">        / / </span>  --------------
 <span class="c-cyan">       / /  </span>  <span class="c-yellow">OS</span>: HTML5 Web Desktop
 <span class="c-cyan">      / /   </span>  <span class="c-yellow">Kernel</span>: Browser Engine
@@ -372,7 +376,7 @@ input.addEventListener('keydown', function(e) {
         // 1. 添加用户的输入历史
         const userLine = document.createElement('div');
         userLine.className = 'output-line';
-        userLine.innerHTML = `<span class="prompt">root@stier:${currentPath}$</span><span class="user-input">${escapeHtml(cmd)}</span>`;
+        userLine.innerHTML = `<span class="prompt">user@stier:${currentPath}$</span><span class="user-input">${escapeHtml(cmd)}</span>`;
         historyDiv.appendChild(userLine);
 
         // 2. 处理命令
@@ -413,7 +417,7 @@ Available commands:<br>
             output = new Date().toString();
             break;
         case 'whoami':
-            output = 'root';
+            output = 'user';
             break;
         case 'ls':
             {
