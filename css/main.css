@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Fira Code';
-    src: url('../fonts/FiraCode-Regular.ttf') format('truetype');
+    src: url('../fonts/FiraCode/FiraCode-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
-    font-family: 'Fira Codeee';
-    src: url('../fonts/FiraCode-Bold.ttf') format('truetype');
-    font-weight: 700;
+    font-family: 'LXGW WenKai Mono';
+    src: url('../fonts/LXGWWenKai/LXGWWenKaiMono-Regular.ttf') format('truetype');
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -19,7 +19,7 @@
     --text-color: #00ff41; /* 经典黑客绿 */
     --prompt-color: #00bfff; /* 提示符蓝色 */
     --white: #f0f0f0;
-    --font-stack: 'Fira Code', 'Courier New', monospace;
+    --font-stack: 'Fira Code', 'LXGW WenKai Mono', 'Courier New', monospace;
 }
 
 ::selection {

@@ -389,17 +389,17 @@ function appendOutput(html) {
 updatePrompt();
 
 const fastfetchArt = `
-<span class="c-cyan">         __ </span>  <span class="c-green"user@stier</span>
-<span class="c-cyan">        / / </span>  --------------
-<span class="c-cyan">       / /  </span>  <span class="c-yellow">OS</span>: HTML5 Web Desktop
-<span class="c-cyan">      / /   </span>  <span class="c-yellow">Kernel</span>: Browser Engine
-<span class="c-cyan">     / /    </span>  <span class="c-yellow">Uptime</span>: Just now
-<span class="c-cyan">    /  \\    </span>  <span class="c-yellow">Pubtime</span>: Apr 26, 2023
-<span class="c-cyan">   /    \\   </span>  <span class="c-yellow">Resolution</span>: ${window.innerWidth}x${window.innerHeight}
-<span class="c-cyan">  / | |\\ \\  </span>  <span class="c-yellow">Memory</span>: Simulated 100%
-<span class="c-cyan"> / /| | \\ \\ </span>  <span class="c-yellow">CPU</span>: Simulated 100%
-<span class="c-cyan">| | | | / / </span>  <span class="c-yellow">Shell</span>: JS-Bash
-<span class="c-cyan">| | | |/ /  </span>
+<span class="c-cyan">         __ </span>
+<span class="c-cyan">        / / </span>  <span class="c-green"</span>user@stier
+<span class="c-cyan">       / /  </span>  --------------
+<span class="c-cyan">      / /   </span>  <span class="c-yellow">OS</span>: HTML5 Web Desktop
+<span class="c-cyan">     / /    </span>  <span class="c-yellow">Kernel</span>: Browser Engine
+<span class="c-cyan">    /  \\    </span>  <span class="c-yellow">Uptime</span>: Just now
+<span class="c-cyan">   /    \\   </span>  <span class="c-yellow">Pubtime</span>: Apr 26, 2023
+<span class="c-cyan">  / | |\\ \\  </span>  <span class="c-yellow">Resolution</span>: ${window.innerWidth}x${window.innerHeight}
+<span class="c-cyan"> / /| | \\ \\ </span>  <span class="c-yellow">Memory</span>: Simulated 100%
+<span class="c-cyan">| | | | / / </span>  <span class="c-yellow">CPU</span>: Simulated 100%
+<span class="c-cyan">| | | |/ /  </span>  <span class="c-yellow">Disk</span>: 694GB / 980GB
 <span class="c-cyan">| | |   /   </span>
 <span class="c-cyan">| | | | \\   </span>
 <span class="c-cyan">| | | |\\ \\  </span>

@@ -10,22 +10,745 @@
             "Documents": {
               "type": "dir",
               "children": {
+                "游园会": {
+                  "type": "dir",
+                  "children": {
+                    "解梦人.docx": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/解梦人.docx"
+                    },
+                    "印章.png": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/印章.png"
+                    },
+                    "印章.psd": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/印章.psd"
+                    },
+                    "印章2.png": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/印章2.png"
+                    },
+                    "印章3.png": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/印章3.png"
+                    },
+                    "印章4.png": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/印章4.png"
+                    },
+                    "CoinPLUSPro.par": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/CoinPLUSPro.par"
+                    },
+                    "CoinPLUSPro.stl": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/CoinPLUSPro.stl"
+                    },
+                    "CoinPULSPro.png": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/CoinPULSPro.png"
+                    },
+                    "Sticker.psd": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/游园会/Sticker.psd"
+                    }
+                  }
+                },
                 "nameOFanother.txt": {
                   "type": "file",
                   "source": "./fs/home/stier/Documents/nameOFanother.txt"
                 },
-                "plan.md": {
+                "Oeasy": {
+                  "type": "dir",
+                  "children": {
+                    "VerifyUser.dll": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/Oeasy/VerifyUser.dll"
+                    },
+                    "VerifyUser.dll.hacked": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/Oeasy/VerifyUser.dll.hacked"
+                    }
+                  }
+                },
+                "problems": {
+                  "type": "dir",
+                  "children": {
+                    "F001": {
+                      "type": "dir",
+                      "children": {
+                        "0.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/0.in"
+                        },
+                        "0.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/0.out"
+                        },
+                        "1.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/1.in"
+                        },
+                        "1.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/1.out"
+                        },
+                        "2.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/2.in"
+                        },
+                        "2.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/2.out"
+                        },
+                        "3.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/3.in"
+                        },
+                        "3.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/3.out"
+                        },
+                        "4.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/4.in"
+                        },
+                        "4.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/4.out"
+                        },
+                        "5.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/5.in"
+                        },
+                        "5.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/5.out"
+                        },
+                        "6.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/6.in"
+                        },
+                        "6.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/6.out"
+                        },
+                        "7.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/7.in"
+                        },
+                        "7.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/7.out"
+                        },
+                        "8.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/8.in"
+                        },
+                        "8.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/8.out"
+                        },
+                        "9.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/9.in"
+                        },
+                        "9.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/9.out"
+                        },
+                        "index.md": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/index.md"
+                        },
+                        "main.py": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F001/main.py"
+                        }
+                      }
+                    },
+                    "F002": {
+                      "type": "dir",
+                      "children": {
+                        "0.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/0.in"
+                        },
+                        "0.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/0.out"
+                        },
+                        "1.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/1.in"
+                        },
+                        "1.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/1.out"
+                        },
+                        "2.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/2.in"
+                        },
+                        "2.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/2.out"
+                        },
+                        "3.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/3.in"
+                        },
+                        "3.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/3.out"
+                        },
+                        "4.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/4.in"
+                        },
+                        "4.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/4.out"
+                        },
+                        "5.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/5.in"
+                        },
+                        "5.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/5.out"
+                        },
+                        "6.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/6.in"
+                        },
+                        "6.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/6.out"
+                        },
+                        "7.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/7.in"
+                        },
+                        "7.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/7.out"
+                        },
+                        "8.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/8.in"
+                        },
+                        "8.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/8.out"
+                        },
+                        "9.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/9.in"
+                        },
+                        "9.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/9.out"
+                        },
+                        "index.md": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/index.md"
+                        },
+                        "main.cpp": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F002/main.cpp"
+                        }
+                      }
+                    },
+                    "F003": {
+                      "type": "dir",
+                      "children": {
+                        "0.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/0.in"
+                        },
+                        "0.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/0.out"
+                        },
+                        "1.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/1.in"
+                        },
+                        "1.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/1.out"
+                        },
+                        "2.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/2.in"
+                        },
+                        "2.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/2.out"
+                        },
+                        "3.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/3.in"
+                        },
+                        "3.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/3.out"
+                        },
+                        "4.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/4.in"
+                        },
+                        "4.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/4.out"
+                        },
+                        "5.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/5.in"
+                        },
+                        "5.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/5.out"
+                        },
+                        "6.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/6.in"
+                        },
+                        "6.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/6.out"
+                        },
+                        "7.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/7.in"
+                        },
+                        "7.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/7.out"
+                        },
+                        "8.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/8.in"
+                        },
+                        "8.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/8.out"
+                        },
+                        "9.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/9.in"
+                        },
+                        "9.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/9.out"
+                        },
+                        "index.md": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/index.md"
+                        },
+                        "main.cpp": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F003/main.cpp"
+                        }
+                      }
+                    },
+                    "F004": {
+                      "type": "dir",
+                      "children": {
+                        "0.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/0.in"
+                        },
+                        "0.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/0.out"
+                        },
+                        "1.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/1.in"
+                        },
+                        "1.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/1.out"
+                        },
+                        "2.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/2.in"
+                        },
+                        "2.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/2.out"
+                        },
+                        "3.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/3.in"
+                        },
+                        "3.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/3.out"
+                        },
+                        "4.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/4.in"
+                        },
+                        "4.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/4.out"
+                        },
+                        "5.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/5.in"
+                        },
+                        "5.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/5.out"
+                        },
+                        "6.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/6.in"
+                        },
+                        "6.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/6.out"
+                        },
+                        "7.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/7.in"
+                        },
+                        "7.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/7.out"
+                        },
+                        "8.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/8.in"
+                        },
+                        "8.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/8.out"
+                        },
+                        "9.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/9.in"
+                        },
+                        "9.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/9.out"
+                        },
+                        "index.md": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/index.md"
+                        },
+                        "main.cpp": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F004/main.cpp"
+                        }
+                      }
+                    },
+                    "F005": {
+                      "type": "dir",
+                      "children": {
+                        "0.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/0.in"
+                        },
+                        "0.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/0.out"
+                        },
+                        "1.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/1.in"
+                        },
+                        "1.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/1.out"
+                        },
+                        "2.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/2.in"
+                        },
+                        "2.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/2.out"
+                        },
+                        "3.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/3.in"
+                        },
+                        "3.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/3.out"
+                        },
+                        "4.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/4.in"
+                        },
+                        "4.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/4.out"
+                        },
+                        "5.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/5.in"
+                        },
+                        "5.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/5.out"
+                        },
+                        "6.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/6.in"
+                        },
+                        "6.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/6.out"
+                        },
+                        "7.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/7.in"
+                        },
+                        "7.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/7.out"
+                        },
+                        "8.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/8.in"
+                        },
+                        "8.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/8.out"
+                        },
+                        "9.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/9.in"
+                        },
+                        "9.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/9.out"
+                        },
+                        "index.md": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/index.md"
+                        },
+                        "main.cpp": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F005/main.cpp"
+                        }
+                      }
+                    },
+                    "F006": {
+                      "type": "dir",
+                      "children": {
+                        "0.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/0.in"
+                        },
+                        "0.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/0.out"
+                        },
+                        "1.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/1.in"
+                        },
+                        "1.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/1.out"
+                        },
+                        "2.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/2.in"
+                        },
+                        "2.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/2.out"
+                        },
+                        "3.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/3.in"
+                        },
+                        "3.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/3.out"
+                        },
+                        "4.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/4.in"
+                        },
+                        "4.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/4.out"
+                        },
+                        "5.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/5.in"
+                        },
+                        "5.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/5.out"
+                        },
+                        "6.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/6.in"
+                        },
+                        "6.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/6.out"
+                        },
+                        "7.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/7.in"
+                        },
+                        "7.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/7.out"
+                        },
+                        "8.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/8.in"
+                        },
+                        "8.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/8.out"
+                        },
+                        "9.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/9.in"
+                        },
+                        "9.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/9.out"
+                        },
+                        "index.md": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/index.md"
+                        },
+                        "main.cpp": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F006/main.cpp"
+                        }
+                      }
+                    },
+                    "F007": {
+                      "type": "dir",
+                      "children": {
+                        "0.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/0.in"
+                        },
+                        "0.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/0.out"
+                        },
+                        "1.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/1.in"
+                        },
+                        "1.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/1.out"
+                        },
+                        "2.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/2.in"
+                        },
+                        "2.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/2.out"
+                        },
+                        "3.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/3.in"
+                        },
+                        "3.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/3.out"
+                        },
+                        "4.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/4.in"
+                        },
+                        "4.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/4.out"
+                        },
+                        "5.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/5.in"
+                        },
+                        "5.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/5.out"
+                        },
+                        "6.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/6.in"
+                        },
+                        "6.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/6.out"
+                        },
+                        "7.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/7.in"
+                        },
+                        "7.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/7.out"
+                        },
+                        "8.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/8.in"
+                        },
+                        "8.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/8.out"
+                        },
+                        "9.in": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/9.in"
+                        },
+                        "9.out": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/9.out"
+                        },
+                        "index.md": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/index.md"
+                        },
+                        "main.cpp": {
+                          "type": "file",
+                          "source": "./fs/home/stier/Documents/problems/F007/main.cpp"
+                        }
+                      }
+                    }
+                  }
+                },
+                "sayings.md": {
                   "type": "file",
-                  "source": "./fs/home/stier/Documents/plan.md"
+                  "source": "./fs/home/stier/Documents/sayings.md"
+                },
+                "Secret": {
+                  "type": "dir",
+                  "children": {
+                    "lXB.mp4": {
+                      "type": "file",
+                      "source": "./fs/home/stier/Documents/Secret/lXB.mp4"
+                    }
+                  }
                 }
               }
             },
             "Downloads": {
               "type": "dir",
               "children": {
-                "release-notes.txt": {
+                "网络.pdf": {
                   "type": "file",
-                  "source": "./fs/home/stier/Downloads/release-notes.txt"
+                  "source": "./fs/home/stier/Downloads/网络.pdf"
                 }
               }
             },
@@ -36,9 +759,25 @@
             "Pictures": {
               "type": "dir",
               "children": {
+                "合照壁纸.png": {
+                  "type": "file",
+                  "source": "./fs/home/stier/Pictures/合照壁纸.png"
+                },
+                "张雄伟语录-上.jpg": {
+                  "type": "file",
+                  "source": "./fs/home/stier/Pictures/张雄伟语录-上.jpg"
+                },
+                "张雄伟语录-下.jpg": {
+                  "type": "file",
+                  "source": "./fs/home/stier/Pictures/张雄伟语录-下.jpg"
+                },
                 "flf.jpg": {
                   "type": "file",
                   "source": "./fs/home/stier/Pictures/flf.jpg"
+                },
+                "STI-logo-2.0.png": {
+                  "type": "file",
+                  "source": "./fs/home/stier/Pictures/STI-logo-2.0.png"
                 }
               }
             },
