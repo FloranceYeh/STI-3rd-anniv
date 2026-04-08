@@ -1,0 +1,49 @@
+type: default
+subtasks:
+  - score: 10
+    if: []
+    id: 1
+    type: min
+    cases:
+      - input: 0_1.in
+        output: 0_1.out
+      - input: 0_2.in
+        output: 0_2.out
+      - input: 0_3.in
+        output: 0_3.out
+  - score: 30
+    if: []
+    id: 2
+    type: min
+    cases:
+      - input: 2_1.in
+        output: 2_1.out
+      - input: 2_2.in
+        output: 2_2.out
+      - input: 2_3.in
+        output: 2_3.out
+      - input: 2_4.in
+        output: 2_4.out
+      - input: 2_5.in
+        output: 2_5.out
+      - input: 2_6.in
+        output: 2_6.out
+      - input: 2_7.in
+        output: 2_7.out
+      - input: 2_8.in
+        output: 2_8.out
+      - input: 2_9.in
+        output: 2_9.out
+      - input: 2_10.in
+        output: 2_10.out
+  - score: 60
+    if: []
+    id: 3
+    type: min
+    cases:
+      - input: 3_1.in
+        output: 3_1.out
+      - input: 3_2.in
+        output: 3_2.out
+      - input: 3_3.in
+        output: 3_3.out
