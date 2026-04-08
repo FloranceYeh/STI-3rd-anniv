@@ -65,8 +65,8 @@ window.addEventListener('resize', () => {
 const terminal = document.getElementById('terminal');
 const header = document.getElementById('drag-header');
 
-terminal.style.left = (window.innerWidth / 2 - 350) + 'px';
-terminal.style.top = (window.innerHeight / 2 - 225) + 'px';
+terminal.style.left = (window.innerWidth * 0.1) + 'px';
+terminal.style.top = (window.innerHeight * 0.2) + 'px';
 terminal.style.transform = 'none';
 
 let isDragging = false;
@@ -80,6 +80,13 @@ header.addEventListener('mousedown', (event) => {
     header.style.cursor = 'grabbing';
 });
 
+header.addEventListener('touchstart', (event) => {
+    isDragging = true;
+    const touch = event.touches[0];
+    offsetX = touch.clientX - terminal.offsetLeft;
+    offsetY = touch.clientY - terminal.offsetTop;
+});
+
 document.addEventListener('mousemove', (event) => {
     if (isDragging) {
         terminal.style.left = (event.clientX - offsetX) + 'px';
@@ -87,9 +94,21 @@ document.addEventListener('mousemove', (event) => {
     }
 });
 
+document.addEventListener('touchmove', (event) => {
+    if (isDragging) {
+        const touch = event.touches[0];
+        terminal.style.left = (touch.clientX - offsetX) + 'px';
+        terminal.style.top = (touch.clientY - offsetY) + 'px';
+    }
+}, { passive: false });
+
 document.addEventListener('mouseup', () => {
     isDragging = false;
     header.style.cursor = 'move';
+});
+
+document.addEventListener('touchend', () => {
+    isDragging = false;
 });
 
 /* ------------------------------------------------
@@ -111,16 +130,40 @@ resizer.addEventListener('mousedown', (event) => {
     event.preventDefault();
 });
 
+resizer.addEventListener('touchstart', (event) => {
+    isResizing = true;
+    startWidth = terminal.offsetWidth;
+    startHeight = terminal.offsetHeight;
+    const touch = event.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+});
+
 document.addEventListener('mousemove', (event) => {
     if (isResizing) {
-        const newWidth = Math.max(600, startWidth + (event.clientX - startX));
-        const newHeight = Math.max(400, startHeight + (event.clientY - startY));
+        const newWidth = Math.max(300, startWidth + (event.clientX - startX));
+        const newHeight = Math.max(200, startHeight + (event.clientY - startY));
         terminal.style.width = newWidth + 'px';
         terminal.style.height = newHeight + 'px';
     }
 });
 
+document.addEventListener('touchmove', (event) => {
+    if (isResizing) {
+        const touch = event.touches[0];
+        const newWidth = Math.max(300, startWidth + (touch.clientX - startX));
+        const newHeight = Math.max(200, startHeight + (touch.clientY - startY));
+        terminal.style.width = newWidth + 'px';
+        terminal.style.height = newHeight + 'px';
+        event.preventDefault(); // 防止缩放时页面滚动
+    }
+}, { passive: false });
+
 document.addEventListener('mouseup', () => {
+    isResizing = false;
+});
+
+document.addEventListener('touchend', () => {
     isResizing = false;
 });
 
