@@ -725,3 +725,9 @@ document.addEventListener('click', () => {
         input.focus();
     }
 });
+
+/* ------------------------------------------------
+    6. 初始化预加载
+------------------------------------------------ */
+ensureFileSystemReady().catch(err => console.error('Failed to preload filesystem:', err));
+
