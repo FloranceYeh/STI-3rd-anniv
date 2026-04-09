@@ -1204,6 +1204,10 @@
             "Pictures": {
               "type": "dir",
               "children": {
+                "合照壁纸.png": {
+                  "type": "file",
+                  "source": "./fs/home/stier/Pictures/合照壁纸.png"
+                },
                 "张雄伟语录-上.jpg": {
                   "type": "file",
                   "source": "./fs/home/stier/Pictures/张雄伟语录-上.jpg"
@@ -1219,6 +1223,57 @@
                 "STI-logo-2.0.png": {
                   "type": "file",
                   "source": "./fs/home/stier/Pictures/STI-logo-2.0.png"
+                }
+              }
+            },
+            "STI_menbers": {
+              "type": "dir",
+              "children": {
+                "A_tier": {
+                  "type": "dir",
+                  "children": {
+                    "amydxhs.md": {
+                      "type": "file",
+                      "source": "./fs/home/stier/STI_menbers/A_tier/amydxhs.md"
+                    },
+                    "Chose_B.md": {
+                      "type": "file",
+                      "source": "./fs/home/stier/STI_menbers/A_tier/Chose_B.md"
+                    },
+                    "Erina.md": {
+                      "type": "file",
+                      "source": "./fs/home/stier/STI_menbers/A_tier/Erina.md"
+                    },
+                    "Florance.md": {
+                      "type": "file",
+                      "source": "./fs/home/stier/STI_menbers/A_tier/Florance.md"
+                    },
+                    "Len_zh.md": {
+                      "type": "file",
+                      "source": "./fs/home/stier/STI_menbers/A_tier/Len_zh.md"
+                    },
+                    "Mell.md": {
+                      "type": "file",
+                      "source": "./fs/home/stier/STI_menbers/A_tier/Mell.md"
+                    },
+                    "TruthLuming.md": {
+                      "type": "file",
+                      "source": "./fs/home/stier/STI_menbers/A_tier/TruthLuming.md"
+                    },
+                    "User694.md": {
+                      "type": "file",
+                      "source": "./fs/home/stier/STI_menbers/A_tier/User694.md"
+                    }
+                  }
+                },
+                "S_tier": {
+                  "type": "dir",
+                  "children": {
+                    "CodeBoy.md": {
+                      "type": "file",
+                      "source": "./fs/home/stier/STI_menbers/S_tier/CodeBoy.md"
+                    }
+                  }
                 }
               }
             },

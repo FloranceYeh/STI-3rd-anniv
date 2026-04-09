@@ -65,8 +65,8 @@ window.addEventListener('resize', () => {
 const terminal = document.getElementById('terminal');
 const header = document.getElementById('drag-header');
 
-terminal.style.left = (window.innerWidth * 0.1) + 'px';
-terminal.style.top = (window.innerHeight * 0.2) + 'px';
+terminal.style.left = (window.innerWidth / 2 - terminal.offsetWidth / 2) + 'px';
+terminal.style.top = (window.innerHeight / 2 - terminal.offsetHeight / 2) + 'px';
 terminal.style.transform = 'none';
 
 let isDragging = false;

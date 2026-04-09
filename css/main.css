@@ -5,8 +5,8 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'LXGW WenKai Mono';
-    src: url('../fonts/LXGWWenKai/LXGWWenKaiMono-Regular.ttf') format('truetype');
+    font-family: 'LXGW WenKai Mono Light';
+    src: url('../fonts/LXGWWenKai/LXGWWenKaiMonoLight-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
@@ -19,7 +19,7 @@
     --text-color: #00ff41; /* 经典黑客绿 */
     --prompt-color: #00bfff; /* 提示符蓝色 */
     --white: #f0f0f0;
-    --font-stack: 'Fira Code', 'LXGW WenKai Mono', 'Courier New', monospace;
+    --font-stack: 'Fira Code', 'LXGW WenKai Mono Light', 'Courier New', monospace;
 }
 
 ::selection {
